@@ -107,7 +107,6 @@
     "node_modules/**",
     "dist",
     "build",
-    "src/**/*.spec.*",
     "**.config.js"
   ]
 }
