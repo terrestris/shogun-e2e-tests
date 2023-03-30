@@ -11,6 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  snapshotPathTemplate: './e2e-tests/additional-files/screenshots/{arg}{ext}',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {

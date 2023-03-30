@@ -48,109 +48,106 @@ test('draw', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Modify color scheme' })).toBeVisible();
 });
 
-test('draw-point', async ({ page }) => {
+test('draw-point', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
   await page.getByRole('button', { name: 'Point' }).click();
-  const beforePoint = await page.screenshot({
-    path: './screenshots/beforeDraw.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-point-'
+    + workerInfo.project.name +'-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
-  const afterPoint = await page.screenshot({
-    path: './screenshots/afterDraw.png'
-  });
 
-  const comparatorPoint = getComparator('image/png');
-  expect(comparatorPoint(beforePoint, afterPoint)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-point-'
+  + workerInfo.project.name 
+  + '-linux.png');
+
 });
 
-test('draw-line', async ({ page }) => {
+test('draw-line', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
   await page.getByRole('button', { name: 'Line' }).click();
-  const beforeLine = await page.screenshot({
-    path: './screenshots/beforeLine.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-line-' 
+    + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
   await page.mouse.dblclick(500, 500, { delay: 500 });
-  const afterLine = await page.screenshot({
-    path: './screenshots/afterLine.png'
-  });
 
-  const comparatorLine = getComparator('image/png');
-  expect(comparatorLine(beforeLine, afterLine)).not.toBeNull();
+  await expect(page).toHaveScreenshot('draw-line-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-polygon', async ({ page }) => {
+test('draw-polygon', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
   await page.getByRole('button', { name: 'Polygon' }).click();
-  const beforePolygon = await page.screenshot({
-    path: './screenshots/beforePolygon.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-polygon-' 
+    + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
   await page.mouse.click(400, 300, { delay: 500 });
   await page.mouse.dblclick(500, 500, { delay: 500 });
-  const afterPolygon = await page.screenshot({
-    path: './screenshots/afterPolygon.png'
-  });
 
-  const comparatorPolygon = getComparator('image/png');
-  expect(comparatorPolygon(beforePolygon, afterPolygon)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-polygon-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-circle', async ({ page }) => {
+test('draw-circle', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
   await page.getByRole('button', { name: 'Circle' }).click();
-  const beforeCircle = await page.screenshot({
-    path: './screenshots/beforeCircle.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-circle-' 
+    + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
   await page.mouse.click(500, 500, { delay: 500 });
-  const afterCircle = await page.screenshot({
-    path: './screenshots/afterCircle.png'
-  });
-
-  const comparatorCircle = getComparator('image/png');
-  expect(comparatorCircle(beforeCircle, afterCircle)).not.toBeNull();
+  
+  await expect(page).not.toHaveScreenshot('draw-circle-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-rectangle', async ({ page }) => {
+test('draw-rectangle', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
   await page.getByRole('button', { name: 'Rectangle' }).click();
-  const beforeRectangle = await page.screenshot({
-    path: './screenshots/beforeRectangle.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-rectangle-' 
+    + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
   await page.mouse.click(400, 500, { delay: 500 });
-  const afterRectangle = await page.screenshot({
-    path: './screenshots/afterRectangle.png'
-  });
-
-  const comparatorRectangle = getComparator('image/png');
-  expect(comparatorRectangle(beforeRectangle, afterRectangle)).not.toBeNull();
+  
+  await expect(page).not.toHaveScreenshot('draw-rectangle-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-annotation', async ({ page }) => {
+test('draw-annotation', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
   await page.getByRole('button', { name: 'Annotation' }).click();
-  const beforeAnnotation = await page.screenshot({
-    path: './screenshots/beforeAnnotation.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-annotation-' 
+    + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
   await expect(page.getByRole('dialog').filter({ hasText: 'Label' })).toBeVisible();
@@ -160,19 +157,17 @@ test('draw-annotation', async ({ page }) => {
   (await page.waitForSelector('.ant-input')).fill('test');
 
   await page.getByRole('button').filter({ hasText: 'Ok' }).click();
-  const afterAnnotation = await page.screenshot({
-    path: './screenshots/afterAnnotation.png'
-  });
-
-  const comparatorAnnotation = getComparator('image/png');
-  expect(comparatorAnnotation(beforeAnnotation, afterAnnotation)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-annotation-'
+  + workerInfo.project.name 
+  + '-linux.png');
 
   // testing cancel button
   page.reload();
   await page.getByRole('button', { name: 'Draw' }).click();
   await page.getByRole('button', { name: 'Annotation' }).click();
-  const beforeAnnotationCancel = await page.screenshot({
-    path: './screenshots/beforeAnnotationCancel.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-annotation-' 
+    + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
   await expect(page.getByRole('dialog').filter({ hasText: 'Label' })).toBeVisible();
@@ -182,15 +177,12 @@ test('draw-annotation', async ({ page }) => {
   (await page.waitForSelector('.ant-input')).fill('test');
 
   await page.getByRole('button').filter({ hasText: 'Cancel' }).click();
-  const afterAnnotationCancel = await page.screenshot({
-    path: './screenshots/afterAnnotationCancel.png'
-  });
-
-  const comparatorAnnotationCancel = getComparator('image/png');
-  expect(comparatorAnnotationCancel(beforeAnnotationCancel, afterAnnotationCancel)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-annotation-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-edit', async ({ page }) => {
+test('draw-edit', async ({ page }, workerInfo) => {
   function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -202,8 +194,9 @@ test('draw-edit', async ({ page }) => {
   // add point to map
   await page.getByRole('button', { name: 'Point' }).click();
   await page.mouse.click(500, 300, { delay: 500 });
-  const pointSet = await page.screenshot({
-    path: './screenshots/beforeDraw.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-edit-' 
+    + workerInfo.project.name + '-linux.png'
   });
 
   // modify point
@@ -217,211 +210,245 @@ test('draw-edit', async ({ page }) => {
   await page.mouse.up();
   await page.mouse.click(500, 300, { delay: 500 });
 
-  const pointMoved = await page.screenshot({
-    path: './screenshots/afterDraw.png'
-  });
-
-  const comparator = getComparator('image/png');
-  expect(comparator(pointSet, pointMoved)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-edit-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-upload', async ({ page }) => {
+test('draw-upload', async ({ page }, workerInfo) => {
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
 
-  const beforeUpload = await page.screenshot({
-    path: './screenshots/beforeUpload.png'
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-upload-' 
+    + workerInfo.project.name + '-linux.png'
   });
   const fileChooserPromise = page.waitForEvent('filechooser');
   await page.getByRole('textbox').click();
   const fileChooser = await fileChooserPromise;
   await fileChooser.setFiles('./additional-files/test-geometries.geojson');
-  const afterUpload = await page.screenshot({
-    path: './screenshots/afterUpload.png'
-  });
-
-  const comparator = getComparator('image/png');
-  expect(comparator(beforeUpload, afterUpload)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-upload-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
-test('draw-export', async ({ page }) => {
+test('draw-export', async ({ page }, workerInfo) => {
   // ToDo: comparator needs to be less strict + wait for all http request to be finished
 
-  // function timeout(ms) {
-  //   return new Promise(resolve => setTimeout(resolve, ms));
-  // }
-
-  // await page.goto('https://localhost/client/');
-  // await page.getByRole('button', { name: 'Draw' }).click();
-
-  // // ToDo instead of dublicating the code use import here (draw-rectangle)
-  // await page.getByRole('button', { name: 'Rectangle' }).click();
-  // await timeout(500);
-  // await page.mouse.click(500, 300, { delay: 500 });
-  // await timeout(500);
-  // await page.mouse.click(400, 500, { delay: 500 });
-  // await timeout(500);
-  // await page.getByRole('button', { name: 'Rectangle' }).click();
-  // // replace code until here
-
-  // await timeout(6000);
-  // const beforeExport = await page.screenshot({
-  //   path: './screenshots/beforeExport.png'
-  // });
-
-  // // Export file
-  // const downloadPromise = page.waitForEvent('download');
-  // await page.getByRole('button', {name: 'Export', exact: true}).click();
-  // const download = await downloadPromise;
-  // // console.log(await download.path());
-  // await download.saveAs('./additional-files/download-example.geojson');
-
-  // // reload application and import the file again
-  // await page.reload()
-  // await page.waitForResponse(res => res.status() === 200)
-  // await page.getByRole('button', { name: 'Draw' }).click();
-  // const fileChooserPromise = page.waitForEvent('filechooser');
-  // await page.getByRole('textbox').click();
-  // const fileChooser = await fileChooserPromise;
-  // await fileChooser.setFiles('./additional-files/download-example.geojson');
-  // await timeout(6000);
-  // const afterExport = await page.screenshot({
-  //   path: './screenshots/afterExport.png'
-  // });
-
-  // const comparator = getComparator('image/png');
-  // console.log(comparator(beforeExport, afterExport))
-  // expect(comparator(beforeExport, afterExport)).toBeLessThanOrEqual(0.02);
-});
-
-test('draw-delete', async ({ page }) => {
   function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
-  timeout(1000);
+
+  // ToDo instead of dublicating the code use import here (draw-rectangle)
+  await page.getByRole('button', { name: 'Rectangle' }).click();
+  await timeout(500);
+  await page.mouse.click(500, 300, { delay: 500 });
+  await timeout(500);
+  await page.mouse.click(400, 500, { delay: 500 });
+  await timeout(500);
+  await page.getByRole('button', { name: 'Rectangle' }).click();
+  // replace code until here
+
+  await timeout(6000);
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-export-' 
+    + workerInfo.project.name + '-linux.png'
+  });
+
+  // Export file
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', {name: 'Export', exact: true}).click();
+  const download = await downloadPromise;
+  // console.log(await download.path());
+  await download.saveAs('./additional-files/download-example.geojson');
+
+  // reload application and import the file again
+  await page.reload()
+  await page.waitForResponse(res => res.status() === 200)
+  await page.getByRole('button', { name: 'Draw' }).click();
+  const fileChooserPromise = page.waitForEvent('filechooser');
+  await page.getByRole('textbox').click();
+  const fileChooser = await fileChooserPromise;
+  await fileChooser.setFiles('./additional-files/download-example.geojson');
+  await timeout(6000);
+  await expect(page).toHaveScreenshot('draw-export-'
+  + workerInfo.project.name 
+  + '-linux.png');
+});
+
+test('draw-delete', async ({ page }, workerInfo) => {
+  function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  await page.goto('https://localhost/client/');
+  await page.getByRole('button', { name: 'Draw' }).click();
+  await timeout(1000);
 
   // add point to map
   await page.getByRole('button', { name: 'Point' }).click();
   await page.mouse.click(500, 300, { delay: 500 });
-  timeout(500);
-  const pointSet = await page.screenshot({
-    path: './screenshots/pointSet.png'
+  await timeout(500);
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/draw-delete-' 
+    + workerInfo.project.name + '-linux.png'
   });
 
   // delete point
   await page.getByRole('button', { name: 'Delete' }).click({ delay: 1000 });
   await page.mouse.click(500, 300, { delay: 500 });
 
-  const pointDeleted = await page.screenshot({
-    path: './screenshots/pointDeleted.png'
-  });
-
-  const comparator = getComparator('image/png');
-  expect(comparator(pointSet, pointDeleted)).not.toBeNull();
+  await expect(page).not.toHaveScreenshot('draw-delete-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
 test('draw-modify-color-scheme', async ({ page }) => {
-  function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
   await page.goto('https://localhost/client/');
   await page.getByRole('button', { name: 'Draw' }).click();
-  timeout(1000);
 
-  // add point to map
-  await page.getByRole('button', { name: 'Point' }).click();
-  await page.mouse.click(500, 300, { delay: 500 });
-  timeout(500);
-  const pointSet = await page.screenshot({
-    path: './screenshots/pointSet.png'
-  });
-
-  // modify color scheme point
-  await page.getByRole('button', { name: 'Modify color scheme' }).click({ delay: 1000 });
-  await page.mouse.click(500, 300, { delay: 500 });
+  await page.getByRole('button', { name: 'Modify color scheme' }).click();
+  await expect(page.getByLabel('geostyler-drawer')).toBeVisible();
 });
 
+test('query-map-features', async ({ page }) => {
 
+  await page.goto('https://localhost/client/');
 
+  // ToDo: Query map feature:
+  // 1. Countries layer hinzufügen -> layertree tests
+  // auf bonn zoomen -> suchfunktions-test
+  // in die karte klicken
+});
 
+test('export', async ({ page }) => {
 
+  await page.goto('https://localhost/client/');
+  await page.getByRole('button', { name: 'Export' }).click();
 
+  await expect(page.getByLabel('print-title', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('print-comment', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('print-layout', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('print-scale', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('print-dpi', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('print-format', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('create-print', { exact: true })).toBeVisible();
 
+  await page.getByLabel('print-title-input').fill('My Test');
+  await page.getByLabel('print-comment-input').fill('My comment using special characters: öäü!"§²%&[}=?*#');
+  // ToDo: select different drop-down items. Problem: they dont appear as a normal <select>, but as a <Select> imported from antd which is not recognised by .selectOption()
 
+  // test download
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByLabel('create-print').click();
+  const download = await downloadPromise;
+  await download.saveAs('./additional-files/print-download-example.pdf');
+});
 
+test('layertree', async ({ page }, workerInfo) => {
 
+  await page.goto('https://localhost/client/');
+  await page.getByRole('button', { name: 'Maps' }).click();
 
+  await expect(page.getByLabel('layertree')).toBeVisible();
+  await expect(page.getByRole('button', {name: /Add WMS/})).toBeVisible();
+  await page.getByRole('button', {name: /Add WMS/}).click();
 
+  // add wms
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await expect(page.getByLabel('add-all')).toBeVisible();
+  await expect(page.getByLabel('add-all')).toBeDisabled();
+  await expect(page.getByLabel('add-selected')).toBeVisible();
+  await expect(page.getByLabel('add-selected')).toBeDisabled();
+  await expect(page.getByLabel('Select all')).toBeVisible();
+  await expect(page.getByLabel('input-search')).toBeVisible();
+  await expect(page.getByRole('combobox', { name: 'select-version' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Close' })).toBeVisible();
+  
+  await page.getByLabel('input-search').fill('https://sgx.geodatenzentrum.de/wms_topplus_open')
+  await page.getByRole('img', {name: 'search', exact: true}).click();
+  await page.getByRole('checkbox').check();
+  await page.getByLabel('add-selected').click();
+  
+  // test layertree
+  await expect(page.getByLabel('holder').first()).toBeVisible();
+  await expect(page.getByLabel('caret-down').first()).toBeVisible();
+  await expect(page.getByLabel('layer-group').filter({hasText: 'External layers'})).toBeVisible();
+  
+  // test layertree-node
+  await page.getByLabel('caret-down').first().click();
+  await expect(page.getByLabel('layer-name').first()).toBeVisible();
+  await expect(page.getByLabel('loading-indicator').first()).toBeVisible();
+  await expect(page.getByLabel('transparency-slider').first()).toBeVisible();
+  await expect(page.getByLabel('layer-context-menu').first()).toBeVisible();
+  await page.getByLabel('layer-context-menu').first().click();
+  await expect(page.getByLabel('layer-context', {exact: true}).first()).toBeVisible();
 
+  // test layer context - zoom
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/zoom-' 
+    + workerInfo.project.name + '-linux.png'
+  });
+  await page.getByLabel('layer-context-menu').first().click();
+  await page.getByRole('menuitem', {name: 'Zoom to layer extent'}).click();
+  await expect(page).not.toHaveScreenshot('zoom-'
+  + workerInfo.project.name 
+  + '-linux.png');
 
+  // test layer context - legend
+  await page.getByLabel('layer-context-menu').first().click();
+  await page.getByRole('menuitem', {name: 'Show legend'}).click();
+  await expect(page.getByAltText('TopPlusOpen Light Grau legend')).toBeVisible();
 
-test('Download', async ({ page }) => {
-
-  await page.goto('./');
-
-  // close welcome drawer
-  await page.getByRole('button', { name: 'Schließen' }).click();
-
-  // unfold Download
-  await expect(page.getByLabel('Datenmodell')).toBeHidden();
-  await expect(page.getByRole('button', { name: 'download Herunterladen' })).toBeHidden();
-  await expect(page.getByRole('button', { name: 'undo Zurücksetzen' })).toBeHidden();
-  await page.getByText('Download').click();
-  await expect(page.getByRole('button', { name: 'download Herunterladen' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'undo Zurücksetzen' })).toBeVisible();
+  // test layer context - remove layer
+  await expect(page.getByLabel('layer-name').filter({hasText: 'TopPlusOpen Light Grau'})).toBeVisible();
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/delete-layer-' 
+    + workerInfo.project.name + '-linux.png'
+  });
+  await page.getByLabel('layer-context-menu').first().click();
+  await page.getByRole('menuitem', {name: 'Remove layer'}).click();
+  await expect(page.getByLabel('layer-name').filter({hasText: 'TopPlusOpen Light Grau'})).toBeHidden();
+  await expect(page).not.toHaveScreenshot('delete-layer-'
+  + workerInfo.project.name 
+  + '-linux.png');
 });
 
 test('Teilen', async ({ page, context }) => {
 
-  await page.goto('./');
+  await page.goto('https://localhost/client/');
+  await page.getByRole('button', { name: 'Share' }).click();
 
-  // close welcome drawer
-  await page.getByRole('button', { name: 'Schließen' }).click();
-
-  // unfold Share
-  await expect(page.getByRole('button', { name: 'twitter' })).toBeHidden();
-  await expect(page.getByRole('button', { name: 'whats-app' })).toBeHidden();
-  await expect(page.getByRole('button', { name: 'mail' })).toBeHidden();
-  await expect(page.getByRole('textbox')).toBeHidden();
-  await expect(page.getByRole('button', { name: 'copy' })).toBeHidden();
-  await page.getByText('Teilen').click();
-  await expect(page.getByRole('button', { name: 'mail' })).toBeVisible();
-  // await expect(page.getByRole('textbox')).toBeVisible();
-  await expect(page.getByRole('tablist').locator('input[type="text"]')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'copy' })).toBeVisible();
+  await expect(page.getByLabel('twitter')).toBeVisible();
+  await expect(page.getByLabel('whats-app')).toBeVisible();
+  await expect(page.getByLabel('mail')).toBeVisible();
+  await expect(page.getByLabel('copy')).toBeVisible();
+  await expect(page.getByLabel('permalink-url')).toBeVisible();
 
   await Promise.all([
     context.waitForEvent('page'),
-    page.getByRole('button', { name: 'mail' }).click()
+    page.getByLabel('mail').click()
   ]);
 });
 
-test('Drucken', async ({ page }) => {
 
-  await page.goto('./');
 
-  // close welcome drawer
-  await page.getByRole('button', { name: 'Schließen' }).click();
+test('test', async ({ page }, workerInfo) => {
+  
+  await page.goto('https://localhost/client/');
 
-  // unfold Drucken
-  await expect(page.getByPlaceholder('Bitte geben Sie einen Titel ein')).toBeHidden();
-  await expect(page.getByPlaceholder('Bitte geben Sie einen Kommentar ein')).toBeHidden();
-  await expect(page.getByText('A3 Hochformat')).toBeHidden();
-  await expect(page.getByText('72 DPI')).toBeHidden();
-  await expect(page.getByText('PDF')).toBeHidden();
-  await expect(page.getByLabel('Legende drucken')).toBeHidden();
-  await expect(page.getByRole('button', { name: 'download Ausdruck erzeugen' })).toBeHidden();
-  await page.getByText('Drucken').click();
-  await expect(page.getByPlaceholder('Bitte geben Sie einen Titel ein')).toBeVisible();
-  await expect(page.getByPlaceholder('Bitte geben Sie einen Kommentar ein')).toBeVisible();
-  await expect(page.getByText('A3 Hochformat')).toBeVisible();
-  await expect(page.getByText('72 DPI')).toBeVisible();
-  await expect(page.getByText('PDF')).toBeVisible();
-  await expect(page.getByLabel('Legende drucken')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'download Ausdruck erzeugen' })).toBeVisible();
+  await page.screenshot({
+    path: './e2e-tests/additional-files/screenshots/screenshot-' 
+    + workerInfo.project.name + '-linux.png'
+  });
+
+  await expect(page).toHaveScreenshot('screenshot-'
+  + workerInfo.project.name 
+  + '-linux.png');
+
 });
