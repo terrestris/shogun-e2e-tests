@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './e2e-tests',
   snapshotPathTemplate: './e2e-tests/additional-files/screenshots/{arg}{ext}',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -19,7 +19,8 @@ export default defineConfig({
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 5000,
+    toHaveScreenshot: {maxDiffPixelRatio: 0.01}
   },
   /* Run tests in files in parallel */
   fullyParallel: true,

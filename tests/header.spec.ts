@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('footer has most important components', async ({ page }) => {
+test('header has most important components', async ({ page }) => {
 
     await page.goto('https://localhost/client');
 
