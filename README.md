@@ -1,46 +1,49 @@
-idee:
-e2e tests werden in dem repo geschrieben und als npm package exportiert
-in der jeweiligen appliakation wird dann das package importiert mit playwright als peerdependency
--> so wird dann immer das playwright aus dem jeweiligen projekt genutzt
+# SHOGun E2E-Tests for the basic functionalities
 
+This package provides a collection of End-to-End-tests for the basic functions and ui-components of the SHOGun-web-application.
 
-um das paket zu installieren muss aktuell folgender import aufgerufen werden:
-`npm install '../shogun-e2e-tests'`
+The tests must first be imported into the project as an npm package. Then the desired tests can be called individually via an import.
 
-später sollte das module im nexus hochgeladen werden und kann dann von dort importiert werden
+## Usage
 
-Fürs Development:
-In das shogun-e2e-tests Repo wechseln:
-`cd shogun-e2e-tests`
+Each test-file must start with the following import:
 
-Folgenden Befehl ausführen:
-`watch-build-copy './src' 'npm run tsc' './dist' '../shogun-gis-client/node_modules/shogun-e2e-tests/src/'`
-
-
-example test:
 ```
 import {
-  test
+  test,
+  expect
 } from '@playwright/test';
+```
 
-// import tests as module as follow:
-import myTest from 'shogun-e2e-tests/src/shogun-gis-client/toolbox/print';
+Then the desired test must be imported:
 
+```
+import myTest from 'shogun-e2e-tests/e2e-tests/shogun-gis-client/header/userMenu';
+```
+
+The following code example can be used to authenticate as a specific role:
+
+```
 test.use({
   storageState: 'playwright/.auth/admin.json'
 });
+```
 
+Each test can be structured as follows:
+
+```
 test('test', async ({
   page
 }) => {
 
-  // open application
+  // Open application
   await page.goto(`https://${process.env.HOST}/client/?applicationId=${process.env.ID}`);
-  // await page.goto(`${process.env.HOST}/client`);
 
-  await page.getByRole('button', {name: 'Export'}).click();
-
-  // use tests as follow:
+  // Use tests from the package as follow:
   await myTest(page);
+
+  // Application-specific testing can be added
 });
 ```
+
+For some tests the parameter `workerInfo` besides the parameter `page` is needed also. 

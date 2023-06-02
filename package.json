@@ -1,7 +1,7 @@
 {
   "name": "shogun-e2e-tests",
   "version": "1.0.0",
-  "description": "basic e2e tests",
+  "description": "Basic E2E-tests for the SHOGun-Web-GIS",
   "main": "index.js",
   "type": "module",
   "scripts": {
