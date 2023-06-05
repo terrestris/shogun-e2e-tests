@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources 🔰
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 18 👷🏻
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies ⏬
+        run: npm ci
+
+      - name: Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
