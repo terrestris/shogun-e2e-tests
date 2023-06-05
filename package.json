@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@code.terrestris.de:terrestris/shogun-e2e-tests.git"
+    "url": "git@github.com:terrestris/shogun-e2e-tests.git"
   },
   "keywords": [],
   "author": "Fritz Höing",
