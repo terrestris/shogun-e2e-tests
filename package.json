@@ -1,6 +1,6 @@
 {
   "name": "@terrestris/shogun-e2e-tests",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Basic E2E-tests for the SHOGun-Web-GIS",
   "type": "module",
   "files": [
