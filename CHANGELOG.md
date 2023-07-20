@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.1...v1.0.2) (2023-07-20)
+
+
+### Bug Fixes
+
+* adds compiler to workflow ([66e680b](https://github.com/terrestris/shogun-e2e-tests/commit/66e680baba6fc0923901168f22d55b6a0b68c20f))
+* adds type and changes path ([423ff7a](https://github.com/terrestris/shogun-e2e-tests/commit/423ff7a6eb034661927f769475c92a6d76e86ce2))
+
 ## [1.0.1](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.0...v1.0.1) (2023-06-05)
 
 
