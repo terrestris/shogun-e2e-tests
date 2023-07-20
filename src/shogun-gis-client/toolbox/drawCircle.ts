@@ -1,18 +1,18 @@
 import { expect } from '@playwright/test';
 
-export const drawRectangle = async (page, workerInfo) => {
+export const drawCircle = async (page: any, workerInfo: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Draw' }).click();
   
-  await page.getByRole('button', { name: 'Rectangle' }).click();
+  await page.getByRole('button', { name: 'Circle' }).click();
   await page.screenshot({
-    path: './e2e-tests/additional-files/screenshots/draw-rectangle-'
+    path: './e2e-tests/additional-files/screenshots/draw-circle-'
       + workerInfo.project.name + '-linux.png'
   });
   await page.mouse.click(500, 300, { delay: 500 });
-  await page.mouse.click(400, 500, { delay: 500 });
+  await page.mouse.click(500, 500, { delay: 500 });
   
-  await expect(page).not.toHaveScreenshot('draw-rectangle-'
+  await expect(page).not.toHaveScreenshot('draw-circle-'
     + workerInfo.project.name
     + '-linux.png');
 };

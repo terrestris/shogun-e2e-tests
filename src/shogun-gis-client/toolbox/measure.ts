@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const measure = async (page) => {
+export const measure = async (page: any) => {
   await page.waitForLoadState('networkidle');
   
   await page.getByRole('button', { name: 'Measure' }).click();

@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const drawUpload = async (page, workerInfo) => {
+export const drawUpload = async (page: any, workerInfo: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Draw' }).click();
   
