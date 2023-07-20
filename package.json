@@ -1,10 +1,9 @@
 {
   "name": "@terrestris/shogun-e2e-tests",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Basic E2E-tests for the SHOGun-Web-GIS",
-  "type": "module",
   "files": [
-    "e2e-tests"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -14,12 +13,15 @@
   "author": "Fritz Höing",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@playwright/test": "^1.32.0",
+    "@playwright/test": "^1.36.1",
     "@types/node": "^18.14.6",
     "playwright-core": "^1.31.2",
     "semantic-release": "^21.0.3",
     "typescript": "^4.9.5",
     "watch-build-copy": "^1.0.0"
+  },
+  "scripts": {
+    "tsc": "tsc"
   },
   "peerDependencies": {
     "@playwright/test": "^1",
