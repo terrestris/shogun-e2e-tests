@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const drawModifyColorScheme = async (page) => {
+export const drawModifyColorScheme = async (page: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Draw' }).click();
   

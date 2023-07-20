@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const annotations = async (page, workerInfo) => {
+export const annotations = async (page: any, workerInfo: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Draw' }).click();
   

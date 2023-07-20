@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const exportPrint = async (page) => {
+export const exportPrint = async (page: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Export' }).click();
   

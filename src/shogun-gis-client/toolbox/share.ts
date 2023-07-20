@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 
-export const share = async (page, context, workerInfo) => {
-  function timeout(ms) {
+export const share = async (page: any, context: any, workerInfo: any) => {
+  function timeout(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   

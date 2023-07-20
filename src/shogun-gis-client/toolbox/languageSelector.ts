@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const languageSelector = async (page) => {
+export const languageSelector = async (page: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Language selector' }).click();
   

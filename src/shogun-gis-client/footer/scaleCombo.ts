@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const scaleCombo = async (page) => {
+export const scaleCombo = async (page: any) => {
     const initialScaleCombo = await page.getByLabel('scale-combo').innerText();
     const initialScaleLine = await page.getByLabel('scale-line').innerText();
 

@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const layertree = async (page, workerInfo) => {
+export const layertree = async (page: any, workerInfo: any) => {
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: 'Maps' }).click();
   

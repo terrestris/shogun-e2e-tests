@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export const userMenu = async (page) => {
+export const userMenu = async (page: any) => {
     await page.getByLabel('user-menu').click();
     await expect(page.getByRole('menu')).toBeVisible();
     await page.getByRole('menuitem').filter({ hasText: 'About' }).click();
