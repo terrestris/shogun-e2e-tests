@@ -1,4 +1,5 @@
 import { expect } from '@playwright/test';
+import { searchBar } from 'shogun-gis-client/header/searchBar';
 
 export const share = async (page: any, context: any, workerInfo: any) => {
   function timeout(ms: any) {
@@ -32,9 +33,8 @@ export const share = async (page: any, context: any, workerInfo: any) => {
   // ToDo: The main problem is recognising the mailto and closing it again. Testing the functionality will be done in a follow up
   
   // test permalink
-  await page.getByRole('combobox', { name: 'search-bar' }).fill('Bonn');
-  await page.getByText('Bonn, North Rhine-Westphalia, Germany').nth(1).click({ delay: 500 });
-  
+  await searchBar(page);
+
   await page.getByRole('button', { name: 'Maps' }).click();
   await page.getByRole('button', { name: /Add WMS/ }).click();
   await page.getByLabel('input-search').fill('https://sgx.geodatenzentrum.de/wms_topplus_open')

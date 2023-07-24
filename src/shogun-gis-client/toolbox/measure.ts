@@ -10,18 +10,24 @@ export const measure = async (page: any) => {
   
   // testing distance-tool
   await page.getByRole('button', { name: 'Distance' }).click();
-  await page.mouse.click(500, 300, { delay: 500 });
-  await page.mouse.click(500, 400, { delay: 500 });
-  await page.mouse.dblclick(600, 200, { delay: 500 });
+  await page.mouse.move(500, 300);
+  await page.mouse.click(500, 300);
+  await page.mouse.move(500, 400);
+  await page.mouse.click(500, 400);
+  await page.mouse.move(600, 200);
+  await page.mouse.dblclick(600, 200);
   await page.waitForSelector('.react-geo-measure-tooltip');
   await page.getByRole('button', { name: 'Distance' }).click();
   await page.waitForSelector('.react-geo-measure-tooltip', { state: 'hidden' });
   
   // testing area-tool
   await page.getByRole('button', { name: 'Area' }).click();
-  await page.mouse.click(500, 300, { delay: 500 });
-  await page.mouse.click(500, 400, { delay: 500 });
-  await page.mouse.dblclick(600, 200, { delay: 500 });
+  await page.mouse.move(500, 300);
+  await page.mouse.click(500, 300);
+  await page.mouse.move(500, 400);
+  await page.mouse.click(500, 400);
+  await page.mouse.move(600, 200);
+  await page.mouse.dblclick(600, 200);
   await page.waitForSelector('.react-geo-measure-tooltip');
   await page.getByRole('button', { name: 'Area' }).click();
   await page.waitForSelector('.react-geo-measure-tooltip', { state: 'hidden' });
