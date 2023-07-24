@@ -5,5 +5,5 @@ export const drawModifyColorScheme = async (page: any) => {
   await page.getByRole('button', { name: 'Draw' }).click();
   
   await page.getByRole('button', { name: 'Modify color scheme' }).click();
-  await expect(page.getByLabel('geostyler-drawer')).toBeVisible();
+  await expect(page.getByRole('dialog').filter({hasText: 'Style'})).toBeVisible();
 };
