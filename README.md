@@ -2,7 +2,8 @@
 
 This package provides a collection of End-to-End-tests for the basic functions and ui-components of the SHOGun-web-application.
 
-The tests must first be imported into the project as an npm package via the following command: `npm i @terrestris/shogun-e2e-tests`. 
+The tests must first be imported into the project as an npm package via the following command: 
+```npm i @terrestris/shogun-e2e-tests```. 
 Then the desired tests can be called individually via an import.
 
 ## Usage
