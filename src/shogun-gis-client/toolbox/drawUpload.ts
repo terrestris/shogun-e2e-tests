@@ -11,7 +11,7 @@ export const drawUpload = async (page: any, workerInfo: any) => {
   const fileChooserPromise = page.waitForEvent('filechooser');
   await page.getByRole('textbox').click();
   const fileChooser = await fileChooserPromise;
-  await fileChooser.setFiles('./additional-files/test-geometries.geojson');
+  await fileChooser.setFiles('node_modules/@terrestris/shogun-e2e-tests/dist/additional-files/test-geometries.geojson');
   await expect(page).not.toHaveScreenshot('draw-upload-'
     + workerInfo.project.name
     + '-linux.png');
