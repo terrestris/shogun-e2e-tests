@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.5...v1.0.6) (2023-07-25)
+
+
+### Bug Fixes
+
+* pathing ([a611fd0](https://github.com/terrestris/shogun-e2e-tests/commit/a611fd0e1bdd0dae80d4bdf5dc9a6682222bc53d))
+
 ## [1.0.5](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.4...v1.0.5) (2023-07-25)
 
 
