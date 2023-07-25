@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { searchBar } from 'shogun-gis-client/header/searchBar';
+import { searchBar } from '../header/searchBar';
 
 export const share = async (page: any, context: any, workerInfo: any) => {
   function timeout(ms: any) {
@@ -52,6 +52,7 @@ export const share = async (page: any, context: any, workerInfo: any) => {
   await page.goto(`${url}`);
   await page.waitForLoadState('networkidle');
   
+  await timeout(5000);
   await expect(page).toHaveScreenshot('permalink-'
     + workerInfo.project.name
     + '-linux.png');

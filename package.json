@@ -15,13 +15,18 @@
   "devDependencies": {
     "@playwright/test": "^1.36.1",
     "@types/node": "^18.14.6",
+    "copyfiles": "^2.4.1",
     "playwright-core": "^1.31.2",
+    "rimraf": "^5.0.1",
     "semantic-release": "^21.0.3",
     "typescript": "^4.9.5",
     "watch-build-copy": "^1.0.0"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/additional-files/** dist/",
+    "build": "npm run clean && npm run tsc && npm run copy-files"
   },
   "peerDependencies": {
     "@playwright/test": "^1",
