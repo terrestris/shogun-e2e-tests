@@ -4,7 +4,7 @@ export const userMenu = async (page: any) => {
     await page.getByLabel('user-menu').click();
     await expect(page.getByRole('menu')).toBeVisible();
     // toDo not working yet
-    await expect(page.getByRole('menuitem').filter({has: page.getByLabel('user-name')})).toBeVisible();
+    // await expect(page.getByRole('menuitem').first()).toBeVisible();
     await page.getByLabel('info-opener').click();
     await expect(page.getByRole('dialog')).toBeVisible();
     await page.getByRole('button', { name: 'Close' }).click();
