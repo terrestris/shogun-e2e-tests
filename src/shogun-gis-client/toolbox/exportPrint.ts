@@ -1,9 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const exportPrint = async (page: any) => {
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Export' }).click();
-  
   await expect(page.getByLabel('print-title', { exact: true })).toBeVisible();
   await expect(page.getByLabel('print-comment', { exact: true })).toBeVisible();
   await expect(page.getByLabel('print-layout', { exact: true })).toBeVisible();

@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const draw = async (page: any) => {
-  await page.getByRole('button', {name: 'draw'}).click();
   await expect(page.getByRole('button', { name: 'Point' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Line' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Polygon' })).toBeVisible();

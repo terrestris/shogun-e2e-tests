@@ -41,10 +41,13 @@ test('test', async ({
   // Open application
   await page.goto(`https://${process.env.HOST}/client/?applicationId=${process.env.ID}`);
 
+  // Navigate to the feature using the selectors
+  await page.getByRole('button', {name: Draw}).click();
+
   // Use tests from the package as follow:
   await myTest(page);
 
-  // Application-specific testing can be added
+  // Further application-specific testing can be added
 });
 ```
 

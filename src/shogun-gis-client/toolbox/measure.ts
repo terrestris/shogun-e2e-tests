@@ -1,10 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const measure = async (page: any) => {
-  await page.waitForLoadState('networkidle');
-  
-  await page.getByRole('button', { name: 'Measure' }).click();
-  
   await expect(page.getByRole('button', { name: 'Distance' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Area' })).toBeVisible();
   
