@@ -5,10 +5,6 @@ export const share = async (page: any, context: any, workerInfo: any) => {
   function timeout(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Share' }).click();
-  
   await expect(page.getByLabel('twitter')).toBeVisible();
   await expect(page.getByLabel('whats-app')).toBeVisible();
   await expect(page.getByLabel('mail')).toBeVisible();

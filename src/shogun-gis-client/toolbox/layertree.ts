@@ -1,9 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const layertree = async (page: any, workerInfo: any) => {
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Maps' }).click();
-  
   await expect(page.getByLabel('layertree')).toBeVisible();
   await expect(page.getByRole('button', { name: /Add WMS/ })).toBeVisible();
   await page.getByRole('button', { name: /Add WMS/ }).click();

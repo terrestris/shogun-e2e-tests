@@ -1,9 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const drawDelete = async (page: any, workerInfo: any) => {
-  await page.waitForLoadState('networkidle')
-  await page.getByRole('button', { name: 'Draw' }).click();
-  
   // add point to map
   await page.getByRole('button', { name: 'Point' }).click();
   await page.mouse.click(500, 300, { delay: 500 });

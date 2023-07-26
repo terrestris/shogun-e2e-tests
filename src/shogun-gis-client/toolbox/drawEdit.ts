@@ -3,11 +3,7 @@ import { expect } from '@playwright/test';
 export const drawEdit = async (page: any, workerInfo: any) => {
   function timeout(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Draw' }).click();
-  
+  }  
   // add point to map
   await page.getByRole('button', { name: 'Point' }).click();
   await page.mouse.click(500, 300, { delay: 500 });

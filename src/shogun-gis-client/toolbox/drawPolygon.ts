@@ -1,9 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const drawPolygon = async (page: any, workerInfo: any) => {
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Draw' }).click();
-  
   await page.getByRole('button', { name: 'Polygon' }).click();
   await page.screenshot({
     path: './e2e-tests/additional-files/screenshots/draw-polygon-'

@@ -1,9 +1,6 @@
 import { expect } from '@playwright/test';
 
 export const drawExport = async (page: any, workerInfo: any) => {
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Draw' }).click();
-
   // ToDo instead of dublicating the code use import here (draw-rectangle)
   await page.getByRole('button', { name: 'Rectangle' }).click();
   await page.mouse.click(500, 300, { delay: 500 });
