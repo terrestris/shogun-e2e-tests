@@ -1,3 +1,11 @@
+## [1.0.7](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.6...v1.0.7) (2023-07-26)
+
+
+### Bug Fixes
+
+* comment not working selector ([b50dd99](https://github.com/terrestris/shogun-e2e-tests/commit/b50dd996e39410083b0583684238b834412b4d43))
+* update tests ([82341e3](https://github.com/terrestris/shogun-e2e-tests/commit/82341e3cfdb714d78fe50dfca16125d1cb18a3d0))
+
 ## [1.0.6](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.5...v1.0.6) (2023-07-25)
 
 
