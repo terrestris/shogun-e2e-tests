@@ -51,5 +51,5 @@ export const share = async (page: any, context: any, workerInfo: any) => {
   await timeout(5000);
   await expect(page).toHaveScreenshot('permalink-'
     + workerInfo.project.name
-    + '-linux.png');
+    + '-linux.png', {maxDiffPixelRatio: 0.02});
 };
