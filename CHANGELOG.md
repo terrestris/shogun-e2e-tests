@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.7...v1.0.8) (2023-07-31)
+
+
+### Bug Fixes
+
+* fixing visual comparison ([23e2048](https://github.com/terrestris/shogun-e2e-tests/commit/23e204867740bb45ee33dca4dab8c7c9cbd02710))
+
 ## [1.0.7](https://github.com/terrestris/shogun-e2e-tests/compare/v1.0.6...v1.0.7) (2023-07-26)
 
 
