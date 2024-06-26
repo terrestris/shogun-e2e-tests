@@ -4,9 +4,9 @@ import { createHtmlReport } from 'axe-html-reporter';
 import fs from 'fs';
 
 export const scan = async (page: any) => {
-  const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-
-  expect(accessibilityScanResults.violations).toEqual([]);
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
 
   const reportHtml = createHtmlReport({
     results: accessibilityScanResults,
@@ -22,4 +22,6 @@ export const scan = async (page: any) => {
   } catch (error) {
     console.error('Error saving report:', error);
   }
+
+  expect(accessibilityScanResults.violations).toEqual([]);
 };
