@@ -1,11 +1,12 @@
 import { expect } from '@playwright/test';
 
 export const landingPage = async (page: any) => {
-  await page.waitForTimeout(3000);
-  const logo = await page.locator('.header-logo-a');
+  const logo = await page.locator('.header-logo');
   await expect(logo).toBeVisible();
-  await expect(logo).toHaveAttribute('href', '/admin/portal');
   await expect(page.locator('.language-select')).toBeVisible();
+  await page.locator('.language-select').click();
+  await page.getByText('EN', { exact: true }).click();
+
   await expect(page.locator('.user-menu')).toBeVisible();
 
   await expect(page.locator('.portal')).toBeVisible();
@@ -31,4 +32,3 @@ export const landingPage = async (page: any) => {
   await expect(page.locator('div').filter({ hasText: /^Layers$/ })).toBeVisible();
   await expect(page.locator('div').filter({ hasText: /^User$/ })).toBeVisible();
 };
-  

@@ -36,6 +36,7 @@
     "@axe-core/playwright": "^4.9.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "axe-html-reporter": "^2.2.3"
+    "axe-html-reporter": "^2.2.3",
+    "playwright-lighthouse": "^3.2.6"
   }
 }
