@@ -111,7 +111,7 @@ export const layersPage = async (page: any) => {
     await expect(firstRowTypeContent).toContain('TILEWMS');
   
     await page.getByRole('button', { name: 'upload Upload Layer' }).click();
-    await page.locator('input[type="file"]').setInputFiles('src/additional-files/testfile.zip');
+    await page.locator('input[type="file"]').setInputFiles('playwright/testfile.zip');
   
     await expect(page.getByText('Layer successfully created')).toBeVisible();
   };
